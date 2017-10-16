@@ -6,58 +6,6 @@ namespace basic13
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            // // 1. Print 1-255
-            // print1to255();
-
-            // // 2. Print odd numbers 1-255
-            // printOdds1to255();
-
-            // // 3. Print sum from 0-255
-            // printSum1to255();
-
-            // // 4. Iterating through an array
-            // int[] numbers = {1, 3, 5, 7, 9, 13};
-            // iterateThroughArray(numbers);
-
-            // // 5. Find max of an array
-            // int[] arr = {1, 3, 5, 7, -9, -13};
-            // findMax(arr);
-
-            // // 6. Get Average
-            // int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-            // findAvg(arr);
-
-            // // 7. Array with odd numbers 
-            // oddNumsArray();
-
-            // // 8. Greater than Y
-            // int[] example = {1, 3, 5, 7};
-            // int y = 3;
-            // greaterThanY(example, y);
-
-            // // 9. Square the Values
-            // int[] squareArray = {1, 5, 10, -2};
-            // squareArrValues(squareArray);
-
-            // // 10. Eliminate negative numbers
-            // int[] negArray = {1, 5, 10, -2};
-            // elimNegNumbers(negArray);
-
-            // // 11. Min, Max, and Average
-            // int[] x = {1, 5, 10, -2};
-            // minMaxAvg(x);
-
-            // // 12. Shifting values in an array
-            // int[] x = {1, 5, 10, 7, -2};
-            // shiftVals(x);
-
-            // 13. Number to string
-            int[] x = {-1, -3, 2};
-            numToString(x);
-        }
-
         static void print1to255()
         {
             int x = 0;
@@ -75,7 +23,7 @@ namespace basic13
             {
                 Console.WriteLine(j);
                 j += 2;
-            }  
+            }
         }
 
         static void printSum1to255()
@@ -129,7 +77,7 @@ namespace basic13
                 oddsArr[count] = m;
                 count ++;
                 m += 2;
-                // System.Console.WriteLine("Count: {0} and m: {1}", count, m);
+                System.Console.WriteLine("Count: {0} and m: {1}", count, m);
             }
             Array.ForEach(oddsArr, x => Console.WriteLine(x));
         }
@@ -215,6 +163,58 @@ namespace basic13
                 count++;
             }
             Array.ForEach(xStrings, y => Console.WriteLine(y));
+        }
+
+        static void Main(string[] args)
+        {
+            // // 1. Print 1-255
+            // print1to255();
+
+            // // 2. Print odd numbers 1-255
+            // printOdds1to255();
+
+            // // 3. Print sum from 0-255
+            // printSum1to255();
+
+            // // 4. Iterating through an array
+            // int[] numbers = {1, 3, 5, 7, 9, 13};
+            // iterateThroughArray(numbers);
+
+            // // 5. Find max of an array
+            // int[] arr = {1, 3, 5, 7, -9, -13};
+            // findMax(arr);
+
+            // // 6. Get Average
+            // int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            // findAvg(arr);
+
+            // // 7. Array with odd numbers 
+            // oddNumsArray();
+
+            // // 8. Greater than Y
+            // int[] example = {1, 3, 5, 7};
+            // int y = 3;
+            // greaterThanY(example, y);
+
+            // // 9. Square the Values
+            // int[] squareArray = {1, 5, 10, -2};
+            // squareArrValues(squareArray);
+
+            // // 10. Eliminate negative numbers
+            // int[] negArray = {1, 5, 10, -2};
+            // elimNegNumbers(negArray);
+
+            // // 11. Min, Max, and Average
+            // int[] x = {1, 5, 10, -2};
+            // minMaxAvg(x);
+
+            // // 12. Shifting values in an array
+            // int[] x = {1, 5, 10, 7, -2};
+            // shiftVals(x);
+
+            // 13. Number to string
+            int[] x = {-1, -3, 2};
+            numToString(x);
         }
     }
 }
