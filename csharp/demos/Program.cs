@@ -15,6 +15,22 @@ namespace demos
             {
                 Console.WriteLine(i);
             }
+            int start = 0;
+            int end = 5;
+            for (int i = start; i <= end; i++)
+            {
+                Console.WriteLine(i);
+            }
+            for (int i = start; i < end; i ++)
+            {
+                Console.WriteLine(i);
+            }
+            int j = 1;
+            while (j < 6)
+            {
+                Console.WriteLine(j);
+                j = j + 1;
+            }
         }
     }
 }
