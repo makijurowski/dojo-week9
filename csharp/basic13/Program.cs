@@ -53,9 +53,9 @@ namespace basic13
             // int[] x = {1, 5, 10, 7, -2};
             // shiftVals(x);
 
-            // // 13. Number to string
-            // int[] x = {-1, -3, 2};
-            // numToString(x);
+            // 13. Number to string
+            int[] x = {-1, -3, 2};
+            numToString(x);
         }
 
         static void print1to255()
