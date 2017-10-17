@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace card_deck
 {
@@ -30,12 +31,13 @@ namespace card_deck
 
         public class Deck
         {
-            public List<object> Cards { get; set; }
+            public List<Card> Cards { get; set; }
+            public int CardCount { get; set; }
 
             public Deck()
             {
                 int cardCount = 0;
-                Cards = new List<object>();
+                Cards = new List<Card>();
                 string[] suits = { "Spades", "Hearts", "Clubs", "Diamonds" };
                 string[] stringVal = { 
                     "Ace",
@@ -75,19 +77,94 @@ namespace card_deck
                     foreach (KeyValuePair<int, string> card in cardVal) {
                         // System.Console.WriteLine("Key: {0}, Value: {1}", card.Key, card.Value);
                         Card currentCard = new Card(suit, card.Key, card.Value);
-                        currentCard.ShowStatus();
+                        // currentCard.ShowStatus();
                         cardCount += 1;
-                        System.Console.WriteLine("Current Count: {0}", cardCount);
+                        // System.Console.WriteLine("Current Count: {0}", cardCount);
                         Cards.Add(currentCard);
                     }
+                }
+                CardCount = cardCount;
+            }
+
+            public Card Deal() {
+                List<Card> currentDeck = this.Cards;
+                Card currentCard = currentDeck[1];
+                System.Console.WriteLine(currentCard.Val);
+                currentDeck.RemoveAt(1);
+                this.CardCount -= 1;
+                return currentCard;
+            }
+
+            public void Shuffle()
+            {
+                Random rand = new Random();
+                for (int idx = 0; idx < Cards.Count - 1; idx++)
+                {
+                    int randIdx = rand.Next(idx + 1, Cards.Count);
+                    Card tempCard = Cards[idx];
+                    Cards[idx] = Cards[randIdx];
+                    Cards[randIdx] = tempCard;
+                }
+            }
+
+            public Deck Reset() {
+                Deck newDeck = new Deck();
+                return newDeck;
+            }
+        }
+
+        public class Player
+        {
+            public string Name { get; set; }
+            public List<Card> Hand { get; set; }
+            
+            public Player(string name)
+            {
+                Name = name;
+                Hand = new List<Card>();
+            }
+            public Card DrawCard(Deck deck)
+            {
+                deck.Shuffle();
+                Card drawnCard = deck.Deal();
+                Hand.Add(drawnCard);
+                return drawnCard;
+            }
+
+            public Card Discard(int index)
+            {
+                try
+                {
+                    Card discardedCard = Hand[index];
+                    Hand.RemoveAt(index);
+                    return discardedCard;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    return null;
                 }
             }
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Testing my cards
             Deck firstDeck = new Deck();
+            Player me = new Player("Maki");
+            // System.Console.WriteLine(firstDeck.CardCount);
+            Card myCard = firstDeck.Deal();
+            firstDeck.Shuffle();
+            Card myNewestCard = firstDeck.Deal();
+            // System.Console.WriteLine(firstDeck.CardCount);
+            firstDeck = firstDeck.Reset();
+            // System.Console.WriteLine(firstDeck.CardCount);
+            Card myREALNewestCard = me.DrawCard(firstDeck);
+            me.DrawCard(firstDeck);
+            me.DrawCard(firstDeck);
+            me.DrawCard(firstDeck);
+            // System.Console.WriteLine(myREALNewestCard.Val);
+            Card discard = me.Discard(1);
+            // System.Console.WriteLine(discard);
         }
     }
 
