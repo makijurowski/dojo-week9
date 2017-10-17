@@ -8,3 +8,4 @@ string that must be in the same order as they were in the original.
 INPUT (str) => "abc"
 OUTPUT (arr) => ["", "a", "b", "c", "ab", "ac", "bc", "abc"]
 */
+

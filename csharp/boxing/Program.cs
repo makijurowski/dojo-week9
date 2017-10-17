@@ -38,11 +38,8 @@ namespace boxing
                     System.Console.WriteLine("This did not work!");
                 }
             }
-            System.Console.WriteLine("Total sum of all integers: {0}", totalIntSum);
+            System.Console.WriteLine(format: "Total sum of all integers: {0}", arg0: totalIntSum);
         }
-        static void Main(string[] args)
-        {
-            Boxing();
-        }
+        static void Main(string[] args) => Boxing();
     }
 }
