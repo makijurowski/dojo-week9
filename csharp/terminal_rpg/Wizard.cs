@@ -3,7 +3,7 @@ using System;
 namespace terminal_rpg {
     // Child class Wizard which inherits from Human
     public class Wizard : Human {
-        
+
         // Constructor for Wizard that only takes in name as parameter but sets new defaults for other properties of type Human
         public Wizard (string name) : base (name) {
             Intelligence = 25;

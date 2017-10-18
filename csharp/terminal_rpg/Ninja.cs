@@ -3,7 +3,7 @@ using System;
 namespace terminal_rpg {
     // Child class Ninja which inherits from Human
     public class Ninja : Human {
-        
+
         // Constructor for Ninja which only takes name as parameter but sets new default for property of Human
         public Ninja (string name) : base (name) {
             Dexterity = 175;

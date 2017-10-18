@@ -3,7 +3,7 @@ using System;
 namespace terminal_rpg {
     // Child class Samurai which inherits from Human
     public class Samurai : Human {
-        
+
         // Add a new property to Samurai to keep count for How_Many function
         public static int Samurai_Count = 0;
 

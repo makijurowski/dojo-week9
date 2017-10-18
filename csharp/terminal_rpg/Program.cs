@@ -2,6 +2,7 @@
 
 namespace terminal_rpg {
     class Program {
+        // Main method invoked upon running program
         static void Main (string[] args) {
             // Create new players
             Human me = new Human ("Maki");
