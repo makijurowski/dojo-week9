@@ -160,10 +160,10 @@ namespace card_decks {
 
             // TO-DO: Not working, figure out why cards don't show details
             public void ShowHand () {
-                System.Console.WriteLine("-----CURRENT HAND FOR {0} ({1} Cards)-----", Name, Hand.Count);
+                System.Console.WriteLine("-----CURRENT HAND: {0} ({1} Cards)-----", Name, Hand.Count);
                 int handCount = 1;
                 foreach(var handCard in Hand) {
-                    string cardNum = String.Format("Card #{0}", handCount);
+                    string cardNum = String.Format("Hand Card #{0}", handCount);
                     handCard.ShowCard (cardNum);
                     handCount += 1;
                 }
