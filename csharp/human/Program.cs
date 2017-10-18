@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace human
 {
+    // Parent class
     public class Human
     {
         public string Name { get; set; }
@@ -42,6 +43,7 @@ namespace human
             System.Console.WriteLine("Health: {0}", Health);
         }
 
+        // Method used to attack another player passed by reference
         public void Attack(object obj)
         {
             Human enemy = obj as Human;
@@ -56,19 +58,23 @@ namespace human
         }
     }
 
+    // Child class Wizard which inherits from Human
     public class Wizard : Human
     {
+        // Constructor for Wizard that only takes in name as parameter but sets new defaults for other properties of type Human
         public Wizard(string name) : base(name)
         {
             Intelligence = 25;
             Health = 50;
         }
 
+        // Method used to restore health to the Wizard who invokes it
         public void Heal()
         {
             this.Health += Intelligence * 5;
         }
 
+        // Method used to attack another player passed by reference
         public void Fireball(object obj)
         {
             Human enemy = obj as Human;
@@ -85,33 +91,32 @@ namespace human
         }
     }
 
+    // Child class Samurai which inherits from Human
     public class Samurai : Human
     {
-        // private int _Samurai_Count = 0;
-        // public int Samurai_Count { 
-        //     get { return _Samurai_Count; }
-        //     set { _Samurai_Count = value; }
-        // }
+        // Add a new property to Samurai to keep count for How_Many function
+        public static int Samurai_Count = 0;
 
-        // public int Samurai_Count { get; set; }
-
+        // Constructor for Samurai that only takes in name as parameter but sets new defaults for other properties of type Human
         public Samurai(string name) : base(name)
         {
             Health = 200;
-            // Samurai_Count += 1;
+            Samurai_Count += 1;
         }
 
-        // public static void How_Many()
-        // {
-        //     // object sam_properties = PropertyInfo.GetValue(this, null);
-        //     System.Console.WriteLine("Number of Samurais: {0}", numSams);
-        // }
+        // Method used to log the number of samurais that have been created
+        public static void How_Many()
+        {
+            System.Console.WriteLine("Number of Samurais: {0}", Samurai_Count);
+        }
 
+        // Method used to restore health to the Samurai who invokes it
         public void Meditate()
         {
             this.Health = 200;
         }
 
+        // Method used to attack another player passed by reference
         public void Death_Blow(object obj)
         {
             Human enemy = obj as Human;
@@ -130,18 +135,22 @@ namespace human
         }
     }
 
+    // Child class Ninja which inherits from Human
     public class Ninja : Human
     {
+        // Constructor for Ninja which only takes name as parameter but sets new default for property of Human
         public Ninja(string name) : base(name)
         {
             Dexterity = 175;
         }
 
+        // Method used for the Ninja to escape, decreasing their health
         public void Get_Away()
         {
             this.Health -= 15;
         }
 
+        // Method used to attack another player (passed by referenc) and restore health to Ninja who invokes it
         public void Steal(object obj)
         {
             Human enemy = obj as Human;
@@ -161,7 +170,6 @@ namespace human
     {
         static void Main(string[] args)
         {
-            // Human me = new Human("Maki", 3, 10, 3, 200);
             // Create new players
             Human me = new Human("Maki");
             me.Health = 200;
@@ -170,6 +178,7 @@ namespace human
             Ninja Nick = new Ninja("Nick");
             Samurai Sam = new Samurai("Sam");
             Samurai Ducky = new Samurai("Ducky");
+
             // Show stats of players at beginning of game
             System.Console.WriteLine("\n=====Before Attacking======");
             System.Console.WriteLine("\n---------Player 1----------");
@@ -182,6 +191,7 @@ namespace human
             Nick.ShowStatus();
             System.Console.WriteLine("\n---------Player 5----------");
             Sam.ShowStatus();
+
             // Attack round
             System.Console.WriteLine("\n======While Attacking======");
             Wanda.Fireball(me);
@@ -194,6 +204,7 @@ namespace human
             System.Console.WriteLine("\n4. Sam death blows Wanda. (Suck it Wanda!)");
             Nick.Steal(Sam);
             System.Console.WriteLine("\n5. Nick steals from Sam.");
+
             // Show stats of players after attacking
             System.Console.WriteLine("\n======After Attacking======");
             System.Console.WriteLine("\n---------Player 1----------");
@@ -206,6 +217,7 @@ namespace human
             Nick.ShowStatus();
             System.Console.WriteLine("\n---------Player 5----------");
             Sam.ShowStatus();
+            
             // Heal round
             System.Console.WriteLine("\n=======While Healing=======");
             Wanda.Heal();
@@ -218,7 +230,7 @@ namespace human
             System.Console.WriteLine("\n---------Player 5----------");
             Sam.ShowStatus();
             System.Console.WriteLine("\n");
-            // Samurai.How_Many();
+            Samurai.How_Many();
         }
     }
 }
