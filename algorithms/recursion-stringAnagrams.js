@@ -1,5 +1,7 @@
 /* Coding Dojo Algorithms Challenge: String Anagrams
-Given a string, return an array where each element is a string representing a different anagram (a different sequence of letters in that string). For example, if given "lim", return ["ilm", "iml", "lim", "lmi", "mil", "mli"].
+Given a string, return an array where each element is a string representing 
+a different anagram (a different sequence of letters in that string). 
+For example, if given "lim", return ["ilm", "iml", "lim", "lmi", "mil", "mli"].
 */
 
 var randIdx = 0, idx = 0, temp = "", anagramCount = 1, resultsObj = {}, resultsArr;
