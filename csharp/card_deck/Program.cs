@@ -1,18 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace card_deck
+namespace card_decks
 {
     class Program
     {
-        public class Card
+        public class Card 
         {
+            // Initialize properties for Card class
             public string StringVal { get; set; }
             public string Suit { get; set; }
             public int Val { get; set; }
-        
 
+            // Define Card constructor with suit, val, and stringVal parameters/properties
             public Card(string suit, int val, string stringVal)
             {
                 StringVal = stringVal;
@@ -20,26 +21,37 @@ namespace card_deck
                 Val = val;
             }
 
-            public void ShowStatus() {
-                System.Console.WriteLine("------CURRENT CARD-----");
+            // Method to print card properties for debugging
+            public void ShowCard(string title) 
+            {
+                System.Console.WriteLine("-----CURRENT CARD: {0}-----", title);
                 System.Console.WriteLine("StringVal: {0}", StringVal);
                 System.Console.WriteLine("Suit: {0}", Suit);
                 System.Console.WriteLine("Val: {0}", Val);
             }
-
         }
 
         public class Deck
         {
+            // Initialize properties for Deck class
             public List<Card> Cards { get; set; }
             public int CardCount { get; set; }
 
+            // Define Deck constructor with cards and card count properties
+            // Declare arguments to pass to Card class
             public Deck()
             {
                 int cardCount = 0;
                 Cards = new List<Card>();
-                string[] suits = { "Spades", "Hearts", "Clubs", "Diamonds" };
-                string[] stringVal = { 
+                string[] suits = 
+                {
+                    "Spades",
+                    "Hearts",
+                    "Clubs",
+                    "Diamonds"
+                };
+                string[] stringVal =
+                {
                     "Ace",
                     "2",
                     "3",
@@ -54,7 +66,8 @@ namespace card_deck
                     "Queen",
                     "King"
                 };
-                int[] val = {
+                int[] val =
+                {
                     1,
                     2,
                     3,
@@ -69,27 +82,38 @@ namespace card_deck
                     12,
                     13
                 };
+                // Declare a new dictionary to hold vals and cardVals
                 Dictionary<int, string> cardVal = new Dictionary<int, string>();
+                // Add each val to dictionary with val as keys and stringVal as values
                 foreach (int num in val) {
                     cardVal.Add(num, stringVal[num - 1]);
                 }
-                foreach (string suit in suits) {
-                    foreach (KeyValuePair<int, string> card in cardVal) {
-                        // System.Console.WriteLine("Key: {0}, Value: {1}", card.Key, card.Value);
+                // Loops to build a new Deck of 52 cards
+                foreach (string suit in suits) 
+                {
+                    foreach (KeyValuePair<int, string> card in cardVal) 
+                    {
                         Card currentCard = new Card(suit, card.Key, card.Value);
-                        // currentCard.ShowStatus();
+                        // currentCard.ShowCard("Card Creation");
                         cardCount += 1;
-                        // System.Console.WriteLine("Current Count: {0}", cardCount);
                         Cards.Add(currentCard);
                     }
                 }
                 CardCount = cardCount;
             }
 
-            public Card Deal() {
+            public void ShowDeck(string title)
+            {
+                System.Console.WriteLine("-----CURRENT DECK: {0}-----", title);
+                System.Console.WriteLine("CardCount: {0}", CardCount);
+                System.Console.WriteLine("Cards.count: {0}", Cards.Count);
+            }
+
+            public Card Deal() 
+            {
                 List<Card> currentDeck = this.Cards;
                 Card currentCard = currentDeck[1];
-                System.Console.WriteLine(currentCard.Val);
+                currentCard.ShowCard("Dealt Card");
                 currentDeck.RemoveAt(1);
                 this.CardCount -= 1;
                 return currentCard;
@@ -97,18 +121,21 @@ namespace card_deck
 
             public void Shuffle()
             {
-                Random rand = new Random();
-                for (int idx = 0; idx < Cards.Count - 1; idx++)
+                Random random = new Random();
+                for (int index = 0; index < Cards.Count - 1; index++)
                 {
-                    int randIdx = rand.Next(idx + 1, Cards.Count);
-                    Card tempCard = Cards[idx];
-                    Cards[idx] = Cards[randIdx];
-                    Cards[randIdx] = tempCard;
+                    int randomIndex = random.Next(index + 1, Cards.Count);
+                    Card tempCard = Cards[index];
+                    Cards[index] = Cards[randomIndex];
+                    Cards[randomIndex] = tempCard;
                 }
+                // Cards.ShowDeck("Shuffled Deck");
             }
 
-            public Deck Reset() {
+            public Deck Reset()
+            {
                 Deck newDeck = new Deck();
+                newDeck.ShowDeck("Reset Deck");
                 return newDeck;
             }
         }
@@ -117,16 +144,18 @@ namespace card_deck
         {
             public string Name { get; set; }
             public List<Card> Hand { get; set; }
-            
+
             public Player(string name)
             {
                 Name = name;
                 Hand = new List<Card>();
             }
+
             public Card DrawCard(Deck deck)
             {
                 deck.Shuffle();
                 Card drawnCard = deck.Deal();
+                drawnCard.ShowCard("Card Drawn");
                 Hand.Add(drawnCard);
                 return drawnCard;
             }
@@ -136,6 +165,7 @@ namespace card_deck
                 try
                 {
                     Card discardedCard = Hand[index];
+                    discardedCard.ShowCard("Discarded Card");
                     Hand.RemoveAt(index);
                     return discardedCard;
                 }
@@ -144,28 +174,33 @@ namespace card_deck
                     return null;
                 }
             }
+
+            public void ShowPlayer(string title)
+            {
+                System.Console.WriteLine("-----CURRENT PLAYER: {0}-----", title);
+                System.Console.WriteLine("Name: {0}", Name);
+                System.Console.WriteLine("Hand.count: {0}", Hand.Count);
+            }
         }
 
         static void Main(string[] args)
         {
-            // Testing my cards
-            Deck firstDeck = new Deck();
+            // Construct a new deck
+            Deck myDeck = new Deck();
+            myDeck.ShowDeck("My Deck");
+            // Construct a new player
             Player me = new Player("Maki");
-            // System.Console.WriteLine(firstDeck.CardCount);
-            Card myCard = firstDeck.Deal();
-            firstDeck.Shuffle();
-            Card myNewestCard = firstDeck.Deal();
-            // System.Console.WriteLine(firstDeck.CardCount);
-            firstDeck = firstDeck.Reset();
-            // System.Console.WriteLine(firstDeck.CardCount);
-            Card myREALNewestCard = me.DrawCard(firstDeck);
-            me.DrawCard(firstDeck);
-            me.DrawCard(firstDeck);
-            me.DrawCard(firstDeck);
-            // System.Console.WriteLine(myREALNewestCard.Val);
+            me.ShowPlayer("Me!");
+            // Deal cards
+            for (int i = 0; i < 5; i++)
+            {
+                myDeck.Shuffle();
+                Card cardDealt = myDeck.Deal();
+            }
+            // Discard
             Card discard = me.Discard(1);
-            // System.Console.WriteLine(discard);
+            // Reset deck
+            myDeck = myDeck.Reset();
         }
     }
-
 }
