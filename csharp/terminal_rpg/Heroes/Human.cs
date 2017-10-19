@@ -36,11 +36,12 @@ namespace terminal_rpg
         // Method to show the status of the current player
         public void ShowStatus()
         {
-            System.Console.WriteLine("Name: {0}", Name);
-            System.Console.WriteLine("Strength: {0}", Strength);
-            System.Console.WriteLine("Intelligence: {0}", Intelligence);
-            System.Console.WriteLine("Dexterity: {0}", Dexterity);
-            System.Console.WriteLine("Health: {0}", Health);
+            System.Console.WriteLine("{0} (HEALTH: {1}; STRENGTH: {2}; DEXTERITY: {3}; INTELLIGENCE: {4})", 
+                                     Name, 
+                                     Health, 
+                                     Strength, 
+                                     Dexterity, 
+                                     Intelligence);
         }
 
         // Method used to attack another player passed by reference

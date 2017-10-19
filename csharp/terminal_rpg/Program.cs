@@ -7,15 +7,20 @@ namespace terminal_rpg
         // Main method invoked upon running program
         static void Main(string[] args)
         {
-            // Create new players
+            // Create new heroes (players)
             Human me = new Human("Maki");
             me.Health = 200;
             Human Lola = new Human("Lola");
             Wizard Wanda = new Wizard("Wanda");
             Ninja Nick = new Ninja("Nick");
             Samurai Sam = new Samurai("Sam");
-            Samurai Ducky = new Samurai("Ducky");
             Scribe Steve = new Scribe("Steve");
+
+            // Create new enemies
+            Zombie Zeek = new Zombie("Zeek");
+            GiantBaby Timmy = new GiantBaby("Timmy");
+            Spider Slink = new Spider("Slink");
+            Goblin Goblix = new Goblin("Goblix");
 
             // Show stats of players at beginning of game
             System.Console.WriteLine("\n=====Before Attacking======");
