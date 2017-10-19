@@ -1,4 +1,5 @@
 using System;
+// TO-DO: Change player as enemy to object of Enemy class
 
 namespace terminal_rpg
 {

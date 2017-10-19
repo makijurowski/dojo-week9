@@ -17,7 +17,7 @@ namespace terminal_rpg
             this.Health -= 15;
         }
 
-        // Method used to attack another player (passed by referenc) and restore health to Ninja who invokes it
+        // Method used to attack another player (passed by reference) and restore health to Ninja who invokes it
         public void Steal(object obj)
         {
             Human enemy = obj as Human;

@@ -15,7 +15,7 @@ namespace terminal_rpg
             Ninja Nick = new Ninja("Nick");
             Samurai Sam = new Samurai("Sam");
             Samurai Ducky = new Samurai("Ducky");
-            Enemy Steve = new Enemy("Steve");
+            Scribe Steve = new Scribe("Steve");
 
             // Show stats of players at beginning of game
             System.Console.WriteLine("\n=====Before Attacking======");
@@ -29,7 +29,7 @@ namespace terminal_rpg
             Nick.ShowStatus();
             System.Console.WriteLine("\n---------Player 5----------");
             Sam.ShowStatus();
-            System.Console.WriteLine("\n---------Enemy 1-----------");
+            System.Console.WriteLine("\n---------Player 6-----------");
             Steve.ShowStatus();
 
             // Attack round
