@@ -96,6 +96,23 @@ namespace ConsoleApplication
             }
 
             //(Optional) Display the artist names of all members of the group 'Wu-Tang Clan'
+            var challenge6 = (from artist in Artists
+                              join groupList in Groups
+                              on artist.GroupId equals groupList.Id
+                              where groupList.GroupName == "Wu-Tang Clan"
+                              select new {artistName = artist.ArtistName,
+                                          groupName = groupList.GroupName});
+
+            System.Console.WriteLine("\n=========CHALLENGE 6=========");
+            System.Console.WriteLine("All Wu-Tang Clan members");
+            System.Console.WriteLine("-----------------------------\n");
+            
+            count = 1;
+            foreach (var artist in challenge6)
+            {
+                System.Console.WriteLine("{0}. ARTIST NAME: {1} (from {2})\n", count, artist.artistName, artist.groupName);
+                count += 1;
+            }
         }
     }
 }
