@@ -44,16 +44,16 @@ namespace terminal_rpg
             
             // Attack round
             System.Console.WriteLine("\n=============================== While Attacking ===============================\n");
-            Wanda.Fireball(me);
             System.Console.WriteLine("1. Wanda fireballs me.");
-            me.Attack(Steve);
+            Wanda.Fireball(me);
             System.Console.WriteLine("2. I attack Steve.");
-            Steve.Quill_Stab(Wanda);
+            me.Attack(Steve);
             System.Console.WriteLine("3. Steve stabs Wanda with his quill.");
-            Sam.Death_Blow(Wanda);
+            Steve.Quill_Stab(Wanda);
             System.Console.WriteLine("4. Sam death blows Wanda. (Suck it Wanda!)");
-            Nick.Steal(Sam);
+            Sam.Death_Blow(Wanda);
             System.Console.WriteLine("5. Nick steals from Sam.");
+            Nick.Steal(Sam);
 
             // Show stats of players after attacking
             System.Console.WriteLine("\n=============================== After Attacking ===============================\n");
@@ -76,10 +76,10 @@ namespace terminal_rpg
 
             // Heal round
             System.Console.WriteLine("\n================================ While Healing ================================\n");
-            Wanda.Heal();
             System.Console.WriteLine("1. Wanda uses heal on herself.");
-            Sam.Meditate();
+            Wanda.Heal();
             System.Console.WriteLine("2. Sam uses meditate on himself.");
+            Sam.Meditate();
 
             // Show stats of players after healing
             System.Console.WriteLine("\n================================ After Healing ================================\n");
