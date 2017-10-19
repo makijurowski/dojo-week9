@@ -15,7 +15,7 @@ namespace terminal_rpg
         // Method used to restore health to the Wizard who invokes it
         public void Heal()
         {
-            this.Health += Intelligence * 5;
+            Health += Intelligence * 5;
         }
 
         // Method used to attack another player passed by reference
@@ -29,8 +29,7 @@ namespace terminal_rpg
             }
             else
             {
-                int damage = random.Next(20, 51);
-                enemy.Health -= damage;
+                enemy.Health -= random.Next(20, 51);
             }
         }
     }

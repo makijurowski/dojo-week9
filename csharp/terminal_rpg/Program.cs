@@ -7,14 +7,15 @@ namespace terminal_rpg
         // Main method invoked upon running program
         static void Main(string[] args)
         {
-            // Create new heroes (players)
+            // Create new player of class Human
             Human me = new Human("Maki");
             me.Health = 200;
-            Human Lola = new Human("Lola");
+
+            // Create new heroes
+            Scribe Steve = new Scribe("Steve");
             Wizard Wanda = new Wizard("Wanda");
             Ninja Nick = new Ninja("Nick");
             Samurai Sam = new Samurai("Sam");
-            Scribe Steve = new Scribe("Steve");
 
             // Create new enemies
             Zombie Zeek = new Zombie("Zeek");
@@ -22,62 +23,77 @@ namespace terminal_rpg
             Spider Slink = new Spider("Slink");
             Goblin Goblix = new Goblin("Goblix");
 
-            // Show stats of players at beginning of game
-            System.Console.WriteLine("\n=====Before Attacking======");
-            System.Console.WriteLine("\n---------Player 1----------");
-            me.ShowStatus();
-            System.Console.WriteLine("\n---------Player 2----------");
-            Lola.ShowStatus();
-            System.Console.WriteLine("\n---------Player 3----------");
-            Wanda.ShowStatus();
-            System.Console.WriteLine("\n---------Player 4----------");
-            Nick.ShowStatus();
-            System.Console.WriteLine("\n---------Player 5----------");
-            Sam.ShowStatus();
-            System.Console.WriteLine("\n---------Player 6-----------");
-            Steve.ShowStatus();
+            // Show stats of players at the beginning of the game
+            System.Console.WriteLine("\n\n============================== Before Attacking ===============================\n");
+            System.Console.WriteLine("~ ALL PLAYERS ~\n");
+            System.Console.WriteLine("Player 1: {0}", me.ShowStatus());
 
+            // Show stats of heroes at the beginning of the game
+            System.Console.WriteLine("\n~ ALL HEROES ~\n");
+            System.Console.WriteLine("  Hero 1: {0}", Steve.ShowStatus());
+            System.Console.WriteLine("  Hero 2: {0}", Wanda.ShowStatus());
+            System.Console.WriteLine("  Hero 3: {0}", Nick.ShowStatus());
+            System.Console.WriteLine("  Hero 4: {0}", Sam.ShowStatus());
+
+            // Show stats of enemies at the beginning of the game
+            System.Console.WriteLine("\n~ ALL ENEMIES ~\n");
+            System.Console.WriteLine(" Enemy 1: {0}", Zeek.ShowStatus());
+            System.Console.WriteLine(" Enemy 2: {0}", Timmy.ShowStatus());
+            System.Console.WriteLine(" Enemy 3: {0}", Slink.ShowStatus());
+            System.Console.WriteLine(" Enemy 4: {0}", Goblix.ShowStatus());
+            
             // Attack round
-            System.Console.WriteLine("\n======While Attacking======");
+            System.Console.WriteLine("\n=============================== While Attacking ===============================\n");
             Wanda.Fireball(me);
-            System.Console.WriteLine("\n1. Wanda fireballs me.");
-            me.Attack(Lola);
-            System.Console.WriteLine("\n2. I attack Lola.");
-            Lola.Attack(Wanda);
-            System.Console.WriteLine("\n3. Lola attacks Wanda.");
+            System.Console.WriteLine("1. Wanda fireballs me.");
+            me.Attack(Steve);
+            System.Console.WriteLine("2. I attack Steve.");
+            Steve.Quill_Stab(Wanda);
+            System.Console.WriteLine("3. Steve stabs Wanda with his quill.");
             Sam.Death_Blow(Wanda);
-            System.Console.WriteLine("\n4. Sam death blows Wanda. (Suck it Wanda!)");
+            System.Console.WriteLine("4. Sam death blows Wanda. (Suck it Wanda!)");
             Nick.Steal(Sam);
-            System.Console.WriteLine("\n5. Nick steals from Sam.");
+            System.Console.WriteLine("5. Nick steals from Sam.");
 
             // Show stats of players after attacking
-            System.Console.WriteLine("\n======After Attacking======");
-            System.Console.WriteLine("\n---------Player 1----------");
-            me.ShowStatus();
-            System.Console.WriteLine("\n---------Player 2----------");
-            Lola.ShowStatus();
-            System.Console.WriteLine("\n---------Player 3----------");
-            Wanda.ShowStatus();
-            System.Console.WriteLine("\n---------Player 4----------");
-            Nick.ShowStatus();
-            System.Console.WriteLine("\n---------Player 5----------");
-            Sam.ShowStatus();
+            System.Console.WriteLine("\n=============================== After Attacking ===============================\n");
+            System.Console.WriteLine("~ ALL PLAYERS ~\n");
+            System.Console.WriteLine("Player 1: {0}", me.ShowStatus());
+
+            // Show stats of heroes after attacking
+            System.Console.WriteLine("\n~ ALL HEROES ~\n");
+            System.Console.WriteLine("  Hero 1: {0}", Steve.ShowStatus());
+            System.Console.WriteLine("  Hero 2: {0}", Wanda.ShowStatus());
+            System.Console.WriteLine("  Hero 3: {0}", Nick.ShowStatus());
+            System.Console.WriteLine("  Hero 4: {0}", Sam.ShowStatus());
+
+            // Show stats of enemies after attacking
+            System.Console.WriteLine("\n~ ALL ENEMIES ~\n");
+            System.Console.WriteLine(" Enemy 1: {0}", Zeek.ShowStatus());
+            System.Console.WriteLine(" Enemy 2: {0}", Timmy.ShowStatus());
+            System.Console.WriteLine(" Enemy 3: {0}", Slink.ShowStatus());
+            System.Console.WriteLine(" Enemy 4: {0}", Goblix.ShowStatus());
 
             // Heal round
-            System.Console.WriteLine("\n=======While Healing=======");
+            System.Console.WriteLine("\n================================ While Healing ================================\n");
             Wanda.Heal();
-            System.Console.WriteLine("\n1. Wanda uses heal on herself.");
+            System.Console.WriteLine("1. Wanda uses heal on herself.");
             Sam.Meditate();
-            System.Console.WriteLine("\n2. Sam uses meditate on himself.");
+            System.Console.WriteLine("2. Sam uses meditate on himself.");
 
             // Show stats of players after healing
-            System.Console.WriteLine("\n=======After Healing=======");
-            System.Console.WriteLine("\n---------Player 3----------");
-            Wanda.ShowStatus();
-            System.Console.WriteLine("\n---------Player 5----------");
-            Sam.ShowStatus();
+            System.Console.WriteLine("\n================================ After Healing ================================\n");
+            System.Console.WriteLine("~ ALL PLAYERS ~\n");
+            System.Console.WriteLine("Player 1: {0}", me.ShowStatus());
+
+            // Show stats of heroes after healing
+            System.Console.WriteLine("\n~ ALL HEROES ~\n");
+            System.Console.WriteLine("  Hero 1: {0}", Steve.ShowStatus());
+            System.Console.WriteLine("  Hero 2: {0}", Wanda.ShowStatus());
+            System.Console.WriteLine("  Hero 3: {0}", Nick.ShowStatus());
+            System.Console.WriteLine("  Hero 4: {0}", Sam.ShowStatus());
+
             System.Console.WriteLine("\n");
-            Samurai.How_Many();
         }
     }
 }

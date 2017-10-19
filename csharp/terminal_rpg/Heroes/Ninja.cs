@@ -8,13 +8,13 @@ namespace terminal_rpg
         // Constructor for Ninja which only takes name as parameter but sets new default for property of Human
         public Ninja(string name) : base(name)
         {
-            Dexterity = 175;
+            Dexterity = 75;
         }
 
         // Method used for the Ninja to escape, decreasing their health
         public void Get_Away()
         {
-            this.Health -= 15;
+            Health -= 15;
         }
 
         // Method used to attack another player (passed by reference) and restore health to Ninja who invokes it
@@ -27,8 +27,8 @@ namespace terminal_rpg
             }
             else
             {
-                this.Attack(enemy);
-                this.Health += 10;
+                Attack(enemy);
+                Health += 10;
             }
         }
     }

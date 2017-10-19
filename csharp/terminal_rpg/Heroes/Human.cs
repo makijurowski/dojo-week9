@@ -34,14 +34,25 @@ namespace terminal_rpg
         }
 
         // Method to show the status of the current player
-        public void ShowStatus()
+        public string ShowStatus()
         {
-            System.Console.WriteLine("{0} (HEALTH: {1}; STRENGTH: {2}; DEXTERITY: {3}; INTELLIGENCE: {4})", 
-                                     Name, 
-                                     Health, 
-                                     Strength, 
-                                     Dexterity, 
-                                     Intelligence);
+            if (Name.Length < 10)
+            {
+                int numSpaces = 10 - Name.Length;
+                string space = " ";
+                for (int i = 0; i < numSpaces; i++)
+                {
+                    space += " ";
+                }
+                Name = Name += space;
+            }
+            string status = String.Format("{0} (HEALTH: {1}; STRENGTH: {2}; DEXTERITY: {3}; INTELLIGENCE: {4})", 
+                                          Name,
+                                          Health, 
+                                          Strength, 
+                                          Dexterity, 
+                                          Intelligence);
+            return status;
         }
 
         // Method used to attack another player passed by reference

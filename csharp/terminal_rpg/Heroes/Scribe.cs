@@ -14,21 +14,20 @@ namespace terminal_rpg
         // Method used for the Scribe to heal, increasing their health
         public void Write_Poetry()
         {
-            this.Health += 15;
+            Health += 15;
         }
 
         // Method used to attack another player (passed by reference)
-        public void Stab(object obj)
+        public void Quill_Stab(object obj)
         {
             Human enemy = obj as Human;
             if (enemy == null)
             {
-                System.Console.WriteLine("Stab failed. This player does not exist.");
+                System.Console.WriteLine("Quill stab failed. This player does not exist.");
             }
             else
             {
-                this.Attack(enemy);
-                // this.Health += 10;
+                Attack(enemy);
             }
         }
     }

@@ -24,7 +24,7 @@ namespace terminal_rpg
         // Method used to restore health to the Samurai who invokes it
         public void Meditate()
         {
-            this.Health = 200;
+            Health = 200;
         }
 
         // Method used to attack another player passed by reference
