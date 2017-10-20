@@ -10,28 +10,28 @@ namespace mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        // Method which generates index at default route
+        [HttpGet]
+        [Route("")]
+        public string Index()
         {
-            return View();
+            return "Hello World";
         }
 
-        public IActionResult About()
+        // Example to use URL parameter to return string value
+        [HttpGet]
+        [Route("string/{value}")]
+        public string StringProcessor(string value)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return value;
         }
 
-        public IActionResult Contact()
+        // Example to use URL parameter to create Json data
+        [HttpGet]
+        [Route("json/{value}")]
+        public JsonResult JsonProcessor(string value)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Json(value);
         }
     }
 }
