@@ -74,7 +74,7 @@ namespace collections
         static void Main(string[] args)
         {
             // BasicArrays();
-            // MultiplicationTable();
+            MultiplicationTable();
             // ListOfFlavors();
             // UserInfoDict();
         }
